@@ -1,82 +1,124 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>common-base</artifactId>
-    <groupId>org.sakaiproject</groupId>
-    <version>2.7.0-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <pomVersion>3</pomVersion>
+  <extend>../../master/project.xml</extend>
   <name>Sakai Common API Composite Component</name>
-  <groupId>org.sakaiproject</groupId>
-  <artifactId>sakai-common-composite-component</artifactId>
+  <groupId>sakaiproject</groupId>
+  <id>sakai-common-composite-component</id>
+  <currentVersion>${sakai.version}</currentVersion>
   <organization>
     <name>Sakai Project</name>
     <url>http://sakaiproject.org/</url>
   </organization>
   <inceptionYear>2003</inceptionYear>
-  <packaging>jar</packaging>
+
   <properties>
-    <deploy.target/>
+    <!-- build as a jar -->
+    <deploy.type>jar</deploy.type>
   </properties>
+
   <dependencies>
+
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate</artifactId>
+      <groupId>sakaiproject</groupId>
+      <artifactId>sakai-util-api</artifactId>
+      <version>${sakai.version}</version>
     </dependency>
+
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring</artifactId>
+      <groupId>sakaiproject</groupId>
+      <artifactId>sakai-authz-api</artifactId>
+      <version>${sakai.version}</version>
     </dependency>
+
+    <!--  compile time dependencies -->
+
     <dependency>
-      <groupId>org.sakaiproject.kernel</groupId>
-      <artifactId>sakai-kernel-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject.kernel</groupId>
-      <artifactId>sakai-component-manager</artifactId>
-    </dependency>
-<!--org.sakaiprojectsakai-util-api${sakai.version}-->
-<!--org.sakaiprojectsakai-authz-api${sakai.version}-->
-<!--  compile time dependencies -->
-    <dependency>
-      <groupId>org.sakaiproject</groupId>
+      <groupId>sakaiproject</groupId>
       <artifactId>sakai-common-edu-person-api</artifactId>
+      <version>${sakai.version}</version>
     </dependency>
+
     <dependency>
-      <groupId>org.sakaiproject</groupId>
+      <groupId>sakaiproject</groupId>
       <artifactId>sakai-common-manager-api</artifactId>
+      <version>${sakai.version}</version>
     </dependency>
+
     <dependency>
-      <groupId>org.sakaiproject</groupId>
+      <groupId>sakaiproject</groupId>
       <artifactId>sakai-common-type-api</artifactId>
+      <version>${sakai.version}</version>
     </dependency>
+
     <dependency>
-      <groupId>org.sakaiproject</groupId>
+      <groupId>sakaiproject</groupId>
       <artifactId>sakai-common-composite-component-data</artifactId>
+      <version>${sakai.version}</version>
     </dependency>
-<!--org.sakaiprojectsakai-tool-api${sakai.version}-->
-<!--org.sakaiprojectsakai-user-api${sakai.version}-->
-<!--org.sakaiprojectsakai-entity-api${sakai.version}-->
-<!--org.sakaiprojectsakai-component-api${sakai.version}-->
-<!--${sakai.spring.groupId}${sakai.spring.artifactId}${sakai.spring.version}-->
-<!--${sakai.hibernate.groupId}${sakai.hibernate.artifactId}${sakai.hibernate.version}-->
+
+    <dependency>
+      <groupId>sakaiproject</groupId>
+      <artifactId>sakai-tool-api</artifactId>
+      <version>${sakai.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>sakaiproject</groupId>
+      <artifactId>sakai-user-api</artifactId>
+      <version>${sakai.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>sakaiproject</groupId>
+      <artifactId>sakai-entity-api</artifactId>
+      <version>${sakai.version}</version>
+    </dependency>
+    
+     <dependency>
+      <groupId>sakaiproject</groupId>
+      <artifactId>sakai-component-api</artifactId>
+      <version>${sakai.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>concurrent</groupId>
+      <artifactId>concurrent</artifactId>
+      <version>1.3.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>${sakai.spring.groupId}</groupId>
+      <artifactId>${sakai.spring.artifactId}</artifactId>
+      <version>${sakai.spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>${sakai.hibernate.groupId}</groupId>
+      <artifactId>${sakai.hibernate.artifactId}</artifactId>
+      <version>${sakai.hibernate.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
       <version>1.7.0</version>
     </dependency>
+
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.0.4</version>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
     </dependency>
-<!--  unit test runtime dependencies
+
+    <!--  unit test runtime dependencies
       <dependency>
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
@@ -104,7 +146,7 @@
       <dependency>
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
-      <version>1.2.2</version>
+      <version>1.2.1</version>
       </dependency>
       
       <dependency>
@@ -156,16 +198,29 @@
       </dependency>
     -->
   </dependencies>
+
   <build>
+
+    <!-- java source -->
+    <sourceDirectory>src/java</sourceDirectory>
+
     <resources>
+
       <resource>
         <directory>src/java</directory>
+
         <includes>
           <include>**/*.properties</include>
+        </includes>
+
+        <includes>
           <include>**/*.xml</include>
         </includes>
+
       </resource>
+
     </resources>
-<!-- java source -->
+
   </build>
+
 </project>
