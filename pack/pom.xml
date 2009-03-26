@@ -4,7 +4,7 @@
   <parent>
     <artifactId>common-base</artifactId>
     <groupId>org.sakaiproject</groupId>
-    <version>2.7.0-SNAPSHOT</version>
+    <version>M2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <name>Sakai Common Components Package</name>
@@ -27,12 +27,10 @@
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
-      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
-      <version>1.0.4</version>
     </dependency>
   </dependencies>
   <build>
