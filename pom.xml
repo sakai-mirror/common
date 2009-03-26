@@ -32,16 +32,19 @@
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-common-composite-component</artifactId>
         <version>${sakai.version}</version>
+        <scope>runtime</scope>
       </dependency>
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-common-manager-api</artifactId>
         <version>${sakai.version}</version>
+        <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.sakaiproject</groupId>
         <artifactId>sakai-common-type-api</artifactId>
         <version>${sakai.version}</version>
+        <scope>provided</scope>
       </dependency>
       
       <!--  external dependencies -->
@@ -54,6 +57,7 @@
       	<groupId>commons-logging</groupId>
       	<artifactId>commons-logging</artifactId>
       	<version>1.0.4</version>
+      	<scope>provided</scope>
       </dependency>
       <dependency>
       	<groupId>junit</groupId>
