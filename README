@@ -1,0 +1,12 @@
+
+This is the 2.4.x branch of the Common Service, incorporating SakaiPerson.
+
+This is not an official 2.4.x branch as this project was introduced after 2.4 was finalised. 
+However, a 2.4 branch of the common project was required so this branch was created.
+
+Ordinarily you will not need this, unless a specific project you are buulding has called for it.
+
+---
+Steve Swinsburg
+s.swinsburg@lancaster.ac.uk
+27th March 2009
