@@ -1,0 +1,18 @@
+<projectDescription>
+  <name>import-pack</name>
+  <comment/>
+  <projects>
+    <project>archive-import</project>
+    <project>common-cartridge</project>
+    <project>import-content</project>
+    <project>import-impl</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>
