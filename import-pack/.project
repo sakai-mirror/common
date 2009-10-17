@@ -2,10 +2,10 @@
   <name>import-pack</name>
   <comment/>
   <projects>
-    <project>archive-import</project>
     <project>common-cartridge</project>
-    <project>import-content</project>
     <project>import-impl</project>
+    <project>sakai-archive-import</project>
+    <project>sakai-import-content</project>
   </projects>
   <buildSpec>
     <buildCommand>

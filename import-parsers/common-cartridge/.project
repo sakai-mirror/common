@@ -1,10 +1,9 @@
 <projectDescription>
-  <name>sakai-common-cartridge</name>
+  <name>common-cartridge</name>
   <comment/>
   <projects>
-    <project>sakai-archive-api</project>
-    <project>sakai-import-api</project>
-    <project>sakai-import-impl</project>
+    <project>archive-api</project>
+    <project>import-impl</project>
   </projects>
   <buildSpec>
     <buildCommand>

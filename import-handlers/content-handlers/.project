@@ -2,8 +2,8 @@
   <name>sakai-import-content</name>
   <comment/>
   <projects>
-    <project>sakai-import-api</project>
-    <project>sakai-import-impl</project>
+    <project>archive-api</project>
+    <project>import-impl</project>
   </projects>
   <buildSpec>
     <buildCommand>

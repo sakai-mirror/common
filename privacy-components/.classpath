@@ -6,9 +6,9 @@
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar" sourcepath="M2_REPO/junit/junit/3.8.1/junit-3.8.1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/kernel/sakai-kernel-util/1.1.0-beta01/sakai-kernel-util-1.1.0-beta01.jar" sourcepath="M2_REPO/org/sakaiproject/kernel/sakai-kernel-util/1.1.0-beta01/sakai-kernel-util-1.1.0-beta01-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/org/sakaiproject/kernel/sakai-kernel-util/1.1.0-beta02/sakai-kernel-util-1.1.0-beta02.jar" sourcepath="M2_REPO/org/sakaiproject/kernel/sakai-kernel-util/1.1.0-beta02/sakai-kernel-util-1.1.0-beta02-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/dhorwitz/.m2/repository/org/sakaiproject/kernel/sakai-kernel-util/1.1.0-beta01/sakai-kernel-util-1.1.0-beta01-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/home/dhorwitz/.m2/repository/org/sakaiproject/kernel/sakai-kernel-util/1.1.0-beta02/sakai-kernel-util-1.1.0-beta02-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="src" path="/sakai-privacy-impl"/>

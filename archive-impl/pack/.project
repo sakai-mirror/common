@@ -1,9 +1,9 @@
 <projectDescription>
-  <name>sakai-archive-pack</name>
-  <comment/>
+  <name>archive-pack</name>
+  <comment></comment>
   <projects>
-    <project>sakai-archive-impl</project>
-    <project>sakai-archive-impl2</project>
+    <project>archive-impl</project>
+    <project>archive-impl2</project>
   </projects>
   <buildSpec>
     <buildCommand>

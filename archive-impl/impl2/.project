@@ -1,8 +1,8 @@
 <projectDescription>
-  <name>sakai-archive-impl2</name>
+  <name>archive-impl2</name>
   <comment/>
   <projects>
-    <project>sakai-archive-api</project>
+    <project>archive-api</project>
   </projects>
   <buildSpec>
     <buildCommand>
