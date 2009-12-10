@@ -7,7 +7,7 @@
   </parent>
   <name>Sakai Common Project</name>
   <groupId>org.sakaiproject.common</groupId>
-  <version>1.0.0-beta05-SNAPSHOT</version>
+  <version>1.0.0-beta02-SNAPSHOT</version>
   <artifactId>common</artifactId>
   <packaging>pom</packaging>
 	<properties>
