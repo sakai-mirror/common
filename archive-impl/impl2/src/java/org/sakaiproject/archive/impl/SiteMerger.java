@@ -19,6 +19,7 @@
 package org.sakaiproject.archive.impl;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -34,6 +35,7 @@ import org.sakaiproject.authz.api.AuthzGroupService;
 import org.sakaiproject.authz.api.SecurityService;
 import org.sakaiproject.component.cover.ComponentManager;
 import org.sakaiproject.content.api.ContentHostingService;
+import org.sakaiproject.entity.api.EntityManager;
 import org.sakaiproject.entity.api.EntityProducer;
 import org.sakaiproject.exception.IdInvalidException;
 import org.sakaiproject.exception.IdUnusedException;
@@ -77,6 +79,11 @@ public class SiteMerger {
 		m_securityService = service;
 	}
 	
+	protected EntityManager m_entityManager = null;
+	public void setEntityManager(EntityManager m_entityManager) {
+		this.m_entityManager = m_entityManager;
+	}
+	
 	//	 only the resources created by the followinng roles will be imported
 	// role sets are different to different system
 	//public String[] SAKAI_roles = m_filteredSakaiRoles; //= {"Affiliate", "Assistant", "Instructor", "Maintain", "Organizer", "Owner"};
@@ -88,7 +95,7 @@ public class SiteMerger {
 	private String[] new_toolIds = {"sakai.preferences", "sakai.online", "sakai.siteinfo", "sakai.sitesetup", "sakai.discussion"};
 	
 	//SWG TODO I have a feeling this is a bug
-	protected HashSet UsersListAllowImport = new HashSet(); 
+	protected HashSet usersListAllowImport = new HashSet(); 
 	/**
 	* Process a merge for the file, or if it's a directory, for all contained files (one level deep).
 	* @param fileName The site name (for the archive file) to read from.
@@ -260,13 +267,39 @@ public class SiteMerger {
 				{
 					EntityProducer service = (EntityProducer) ComponentManager.get(serviceName);
 					
+					if (service == null) {
+						// find the service using the EntityManager
+						List<EntityProducer> entityProducers = m_entityManager.getEntityProducers();
+						for (EntityProducer entityProducer : entityProducers) {
+							if (serviceName.equals(entityProducer.getClass().getName())
+								|| serviceName.equals(entityProducer.getLabel())
+							) {
+								service = entityProducer;
+								break;
+							}
+						}
+					}
+					
 					try
 					{
 						String msg = "";
-						if ((system.equalsIgnoreCase(ArchiveService.FROM_SAKAI) || system.equalsIgnoreCase(ArchiveService.FROM_SAKAI_2_8)) 
-                                && (checkSakaiService(filterSakaiService,filteredSakaiService, serviceName)))
-							msg = service.merge(siteId, element, fileName, fromSite, attachmentNames, new HashMap() /* empty userIdTran map */, UsersListAllowImport);
-							
+						if (service != null) {
+						
+							if ((system.equalsIgnoreCase(ArchiveService.FROM_SAKAI) || system.equalsIgnoreCase(ArchiveService.FROM_SAKAI_2_8))) {
+								if (checkSakaiService(filterSakaiService, filteredSakaiService, serviceName)) {
+									// checks passed so now we attempt to do the merge
+									if (M_log.isDebugEnabled()) M_log.debug("Merging archive data for "+serviceName+" ("+fileName+") to site "+siteId);
+									msg = service.merge(siteId, element, fileName, fromSite, attachmentNames, new HashMap() /* empty userIdTran map */, usersListAllowImport);
+								} else {
+									M_log.warn("Skipping merge archive data for "+serviceName+" ("+fileName+") to site "+siteId+", checked filter failed (filtersOn="+filterSakaiService+", filters="+Arrays.toString(filteredSakaiService)+")");
+								}
+							} else {
+								M_log.warn("Skipping archive data for for "+serviceName+" ("+fileName+") to site "+siteId+", this does not appear to be a sakai archive");
+							}
+						} else {
+							M_log.warn("Skipping archive data for for "+serviceName+" ("+fileName+") to site "+siteId+", no service (EntityProducer) could be found to deal with this data");
+						}
+								
 						results.append(msg);
 					}
 					catch (Throwable t)
@@ -495,7 +528,7 @@ public class SiteMerger {
 
 					String userId = element3.getAttribute("userId");	
 					// this user has a qualified role, his/her resource will be imported
-					UsersListAllowImport.add(userId);
+					usersListAllowImport.add(userId);
 				}
 			} // for
 		}
